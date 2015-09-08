@@ -11,14 +11,15 @@ class InlinVariable
 		if ($fileName !== '' && file_exists($filePath)) {
 
 			$content = @file_get_contents($filePath);
-			return $content;
+			return TemplateHelper::getRaw( $content );
 
 		} else if ($remote) {
 
 			$content = @file_get_contents($fileName);
-			return $content;
+			return TemplateHelper::getRaw( $content );
 
 		} else {
+			Craft::log( 'Trying to load file ' . $filePath . ' failed.' );
 			return '';
 		}
 	}

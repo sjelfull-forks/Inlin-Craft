@@ -8,7 +8,7 @@ Usage
 ---
 Use it like this:
 
-    <script src="{{ craft.inlin.er('/build/svg/my.svg') | raw }}"></script>
+    <script src="{{ craft.inlin.er('/build/svg/my.svg') }}"></script>
 
 Why? [Sometimes](http://css-tricks.com/svg-sprites-use-better-icon-fonts/) it
 [makes sense](http://www.yottaa.com/blog/bid/306224/Inlining-for-Performance-When-to-Let-the-Cache-Go),
@@ -16,7 +16,7 @@ performance or workflow wise, to inline resources instead of requesting them.
 
 To include a remote file, pass in true as the second parameter:
 
-	{{ craft.inlin.er('http://example.com/remote/path.svg', true) | raw }}
+	{{ craft.inlin.er('http://example.com/remote/path.svg', true) }}
 
 Warning
 ---
@@ -25,7 +25,7 @@ is a potential security risk. And the path is relative to your document root, so
 file anywhere on your server. **Make sure you never, ever let a third party control what is inserted.**
 In case you're thinking "meh", insert this into your template:
 
-    {{ craft.inlin.er('/../craft/config/db.php') | raw }}
+    {{ craft.inlin.er('/../craft/config/db.php') }}
 
 *"With great power, comes great responsibility" -Voltaire*
 
@@ -44,6 +44,9 @@ path. You can configure the path by setting the inlinPublicRoot setting in your 
 
 Changelog
 ---
+### Version 1.2
+ - Remove need to put content through Twig's raw filter on every call
+
 ### Version 1.1
  - Added ability to pull remote files
 
